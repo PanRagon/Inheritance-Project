@@ -9,5 +9,5 @@
  * Allow contract owner to specify what time units he wants the contract to release funds in (days, months, years).
  * Allow for multiple beneficiary addresses with different percentages of total wealth to inherit.
 
- #License
+ # License
  This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
