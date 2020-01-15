@@ -14,6 +14,7 @@ pragma solidity >=0.4.21 <0.7.0;
     uint256 weeklyPayout;
     uint256 valueToWithdraw;
     uint256 contractStart;
+    uint256 lastTimeStamp;
 
      modifier _ownerOnly() {
         require(msg.sender == owner, "Sender is not the owner of this contract");
@@ -58,11 +59,22 @@ pragma solidity >=0.4.21 <0.7.0;
      function startInheritance() public _ownerOnly {
         started = true;
         calculateWeeklyPayout();
+        lastTimeStamp = block.timestamp;
     }
 
      function withdraw(uint256 amount) public _beneficiaryOnly payable {
         require(amount < valueToWithdraw, "There isn't enough Ether available to withdraw yet");
         msg.sender.transfer(amount);
+    }
+
+    function updateValueToWithdraw() public {
+        bool updated = false;
+        while(updated == false) {
+            if(block.timestamp - 1 weeks >= lastTimeStamp) {
+                valueToWithdraw += weeklyPayout;
+                lastTimeStamp += 1 weeks;
+            } else updated = true;
+        }
     }
 
  }
