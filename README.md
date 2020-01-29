@@ -8,6 +8,7 @@
  * Implement unit tests and deploy on Ropsten test network.
  * Allow contract owner to specify what time units he wants the contract to release funds in (days, months, years).
  * Allow for multiple beneficiary addresses with different percentages of total wealth to inherit.
+ * Enable contract owner to set multiple executors that can initiate the inheritance if the contract owner passes
 
  # License
  This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
